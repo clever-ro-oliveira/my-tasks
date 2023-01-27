@@ -11,23 +11,27 @@ const Task = ({ task, handleTaskClick, handleTaskDeletion }) => {
 		navigate(`/${task.title}`);
 	};
 
+	const titleStatus = 'Alterar tarefa para '
+
 	return (
 		<div
 			className="task-container"
 			style={task.completed ? { borderLeft: "6px solid chartreuse" } : {}}
 		>
-			<div className="task-title" onClick={() => handleTaskClick(task.id)}>
+			<div className="task-title" title={task.completed ? titleStatus+"EM ANDAMENTO" : titleStatus+"FINALIZADA"} onClick={() => handleTaskClick(task.id)}>
 				{task.title}
 			</div>
 
 			<div className="buttons-container">
 				<button
+					title="Excluir Tarefa"
 					className="remove-task-button"
 					onClick={() => handleTaskDeletion(task.id)}
 				>
 					<CgClose />
 				</button>
 				<button
+					title="Detalhes da tarefa"
 					className="see-task-details-button"
 					onClick={handleTaskDetailsClick}
 				>
